@@ -4,7 +4,7 @@
   "description": "A boilerplate for Electron + Vue + Parcel.",
   "scripts": {
     "dev": "",
-    "build": "parcel build --public-url . index.pug && parcel build --target electron ./src/main-electron.ts && electron ./dist/main-electron.js"
+    "build": "parcel build --public-url . index.pug && parcel build --target electron ./src/main-electron.ts"
   },
   "repository": {
     "type": "git",
