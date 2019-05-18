@@ -1,0 +1,24 @@
+{
+  "name": "electron-vue-parcel-boilerplate",
+  "version": "1.0.0",
+  "description": "A boilerplate for Electron + Vue + Parcel.",
+  "scripts": {
+    "build": "parcel build --target electron index.html && electron ./dist/main.b0a109ad.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clcl0n/electron-vue-parcel-boilerplate.git"
+  },
+  "author": "Patrik Frantisek Balaz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clcl0n/electron-vue-parcel-boilerplate/issues"
+  },
+  "homepage": "https://github.com/clcl0n/electron-vue-parcel-boilerplate#readme",
+  "devDependencies": {
+    "electron": "^5.0.1",
+    "fs": "0.0.1-security",
+    "pug": "^2.0.3",
+    "typescript": "^3.4.5"
+  }
+}
