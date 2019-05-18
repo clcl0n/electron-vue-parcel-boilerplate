@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "A boilerplate for Electron + Vue + Parcel.",
   "scripts": {
-    "build": "parcel build --target electron index.html && electron ./dist/main.b0a109ad.js"
+    "dev": "",
+    "build": "parcel build --public-url . index.pug && parcel build --target electron ./src/main-electron.ts && electron ./dist/main-electron.js"
   },
   "repository": {
     "type": "git",
@@ -16,9 +17,17 @@
   },
   "homepage": "https://github.com/clcl0n/electron-vue-parcel-boilerplate#readme",
   "devDependencies": {
+    "@vue/component-compiler-utils": "^3.0.0",
+    "cssnano": "^4.1.10",
     "electron": "^5.0.1",
-    "fs": "0.0.1-security",
     "pug": "^2.0.3",
-    "typescript": "^3.4.5"
+    "sass": "^1.20.1",
+    "typescript": "^3.4.5",
+    "vue-property-decorator": "^8.1.1",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "dependencies": {
+    "vue": "^2.6.10",
+    "vue-hot-reload-api": "^2.3.3"
   }
 }
