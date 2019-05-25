@@ -1,5 +1,4 @@
 import { app, BrowserWindow } from "electron";
-import * as path from "path";
 
 let mainWindow: Electron.BrowserWindow;
 
@@ -9,7 +8,7 @@ function createWindow() {
     width: 800,
   });
 
-  mainWindow.loadFile(path.join(__dirname, "./index.html"));
+  mainWindow.loadURL('http://localhost:8000/');
 
   mainWindow.on("closed", () => {
     mainWindow = null;
