@@ -2,8 +2,10 @@
 A boilerplate for Electron + Vue + Parcel.
 
 # Includes
-* Pug instead of pure html
+* Pug
 * TypeScript
+* Vue
+* Electron
 
 # Build
 Dev:
