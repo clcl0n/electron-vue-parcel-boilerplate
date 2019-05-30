@@ -1,10 +1,11 @@
 var path = require('path');
 var webpack = require('webpack');
+const TSLintPlugin = require('tslint-webpack-plugin');
 
 module.exports = {
   entry: './src/main-app.ts',
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.join(__dirname, '/../dist'),
     publicPath: 'dist/',
     filename: 'main-app.js'
   },
@@ -15,7 +16,6 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'vue-loader',
         options: {
-
           loaders: {
             'scss': 'vue-style-loader!css-loader!sass-loader',
             'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
@@ -50,7 +50,7 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader'
+            loader: 'babel-loader',
           },
           {
             loader: 'ts-loader',
@@ -59,6 +59,10 @@ module.exports = {
             }
           }
         ]
+      },
+      { 
+        test: /\.pug$/,
+        use: ['pug-loader']
       }
     ]
   },
@@ -78,7 +82,11 @@ module.exports = {
   devtool: '#source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin()
+    new webpack.NamedModulesPlugin(),
+    new TSLintPlugin({
+      files: ['./src/**/*.ts'],
+      warningsAsError: true
+    })
   ]
 }
 

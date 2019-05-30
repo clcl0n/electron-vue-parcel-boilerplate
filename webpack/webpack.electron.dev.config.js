@@ -19,7 +19,7 @@ module.exports = {
     extensions: [ '.tsx', '.ts', '.js' ]
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.join(__dirname, '/../dist'),
     filename: 'main-electron.js'
   }
 };
