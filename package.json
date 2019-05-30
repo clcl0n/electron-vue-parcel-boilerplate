@@ -2,10 +2,11 @@
   "name": "electron-vue-parcel-boilerplate",
   "version": "1.0.0",
   "description": "A boilerplate for Electron + Vue + Parcel.",
+  "main": "./dist/main-electron.js",
   "scripts": {
-    "electron": "electron ./dist/main-electron.js",
-    "dev": "parcel build --target electron --out-file main-electron.js ./src/main-electron-dev.ts && parcel NODE_ENV=development --port 8000 index.pug",
-    "build": "parcel build --public-url . index.pug && parcel build --target electron ./src/main-electron.ts"
+    "build-dev-app": "webpack-dev-server --config ./webpack/webpack.app.dev.config.js",
+    "build-dev-electron": "webpack --config ./webpack/webpack.electron.dev.config.js",
+    "electron": "electron ."
   },
   "repository": {
     "type": "git",
@@ -18,17 +19,30 @@
   },
   "homepage": "https://github.com/clcl0n/electron-vue-parcel-boilerplate#readme",
   "devDependencies": {
-    "@vue/component-compiler-utils": "^3.0.0",
-    "cssnano": "^4.1.10",
-    "electron": "^5.0.1",
-    "pug": "^2.0.3",
-    "sass": "^1.20.1",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^0.28.10",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.12.0",
+    "pug-loader": "^2.4.0",
+    "sass-loader": "^6.0.7",
+    "style-loader": "^0.20.2",
+    "ts-loader": "^3.5.0",
+    "tslint": "^5.16.0",
+    "tslint-loader": "^3.5.4",
+    "tslint-webpack-plugin": "^2.0.4",
     "typescript": "^3.4.5",
-    "vue-property-decorator": "^8.1.1",
-    "vue-template-compiler": "^2.6.10"
+    "vue-hot-reload-api": "^2.3.3",
+    "vue-loader": "^13.3.0",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.11.1"
   },
   "dependencies": {
+    "electron": "^5.0.1",
+    "pug": "^2.0.3",
     "vue": "^2.6.10",
-    "vue-hot-reload-api": "^2.3.3"
+    "vue-property-decorator": "^8.1.1"
   }
 }
