@@ -1,8 +1,13 @@
 {
     "compilerOptions": {
-        "module": "commonjs"
+        "outDir": "./built/",
+        "sourceMap": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "target": "es5",
+        "experimentalDecorators": true
     },
-    "exclude": [
-        "node_modules"
+    "include": [
+        "./src/**/*"
     ]
 }
