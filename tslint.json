@@ -13,7 +13,8 @@
         "interface-name": true,
         "arrow-parens": false,
         "object-literal-sort-keys": false,
-        "eofline": false
+        "eofline": false,
+        "no-console": false
     },
     "rulesDirectory": []
 }

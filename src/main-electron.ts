@@ -4,22 +4,22 @@ import * as path from 'path';
 let mainWindow: Electron.BrowserWindow;
 
 function createWindow() {
-  // Create the browser window.
   mainWindow = new BrowserWindow({
     height: 600,
     width: 800,
   });
 
-  // and load the index.html of the app.
-  mainWindow.loadFile(path.join(__dirname, '/../index.html'));
+  if (process.env.NODE_ENV === 'development') {
+    mainWindow.loadURL('http://localhost:8000');
+  } else {
+    mainWindow.loadFile(path.join(__dirname, '/../index.html'));
+  }
+
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
 
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
     mainWindow = null;
   });
 }
@@ -45,6 +45,3 @@ app.on('activate', () => {
     createWindow();
   }
 });
-
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
