@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 const TSLintPlugin = require('tslint-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
   entry: './src/main-app.ts',
@@ -18,7 +19,6 @@ module.exports = {
         options: {
           loaders: {
             'scss': 'vue-style-loader!css-loader!sass-loader',
-            'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
           }
         }
       },
@@ -32,37 +32,32 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [{
-          loader: "style-loader"
-        }, {
-          loader: "css-loader"
-        }, {
-          loader: "sass-loader"
-        }]
+        use: [
+          {
+            loader: "style-loader"
+          }, 
+          {
+            loader: "css-loader"
+          }, 
+          {
+            loader: "sass-loader"
+          }
+        ]
+      },
+      {
+        test: /\.ts(x?)$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: { appendTsSuffixTo: [/\.vue$/] }
+      },
+      {
+        test: /\.pug$/,
+        loader: 'pug-plain-loader'
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
-      },
-      {
-        test: /\.ts(x?)$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-          },
-          {
-            loader: 'ts-loader',
-            options: {
-              appendTsSuffixTo: [/\.vue$/]
-            }
-          }
-        ]
-      },
-      { 
-        test: /\.pug$/,
-        use: ['pug-loader']
       }
     ]
   },
@@ -73,14 +68,14 @@ module.exports = {
     }
   },
   devServer: {
-    hot: true,
-    stats: 'minimal'
+    port: 8000
   },
   performance: {
     hints: false
   },
   devtool: '#source-map',
   plugins: [
+    new VueLoaderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new TSLintPlugin({
@@ -90,21 +85,3 @@ module.exports = {
   ]
 }
 
-if (process.env.NODE_ENV === 'production') {  
-  module.exports.plugins = (module.exports.plugins || []).concat([
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        warnings: false
-      }
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
-    })
-  ])
-}
