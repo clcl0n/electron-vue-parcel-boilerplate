@@ -1,5 +1,5 @@
-# electron-vue-parcel-boilerplate
-A boilerplate for Electron + Vue + Parcel.
+# electron-vue-webpack-boilerplate
+A boilerplate for Electron + Vue + TypeScript + WebPack.
 
 # Includes
 * Pug
@@ -13,8 +13,17 @@ Dev:
 npm run dev
 npm run electron
 ```
+or
+```
+yarn run dev
+yarn run electron
+ ```
 Production:
 ```
 npm run build
+```
+or
+```
+yarn run build
 ```
 
