@@ -8,6 +8,7 @@
     "build-dev-electron": "webpack --mode development --config ./webpack/webpack.electron.config.js",
     "build-app": "webpack --mode production --config ./webpack/webpack.app.config.js",
     "build-electron": "webpack --mode production --config ./webpack/webpack.electron.config.js",
+    "build": "npm run build-electron && npm run build-app",
     "dev": "npm run build-dev-electron && npm run build-dev-app",
     "electron": "electron ."
   },
