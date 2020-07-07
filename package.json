@@ -47,7 +47,7 @@
     "webpack-dev-server": "^3.5.0"
   },
   "dependencies": {
-    "electron": "^5.0.2",
+    "electron": "^7.2.4",
     "pug": "^2.0.3",
     "vue": "^2.6.10",
     "vue-property-decorator": "^8.1.1"
